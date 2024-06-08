@@ -104,7 +104,6 @@ function checkGuess() {
   const gameBoard = document.getElementById("gameBoard").children;
   const row = gameBoard[currentRow].children[0].children[0].children;
 
-  // Check if all circles are filled
   for (let i = 0; i < row.length; i++) {
     if (row[i].classList.contains("bg-gray-800")) {
       Swal.fire({
@@ -113,7 +112,7 @@ function checkGuess() {
         icon: "warning",
         confirmButtonText: "OK",
       });
-      return; // Exit the function early
+      return; 
     }
   }
 
@@ -193,11 +192,8 @@ function checkGuess() {
       }
     });
   } else {
-    // Increment the currentRow here after checking the guess
     currentRow++;
-    // Reset current position for the next row
     currentPosition = 0;
-    // Enable the checked button only when the next row is filled
     document.getElementById("checked").disabled = true;
   }
 }
@@ -225,7 +221,6 @@ function looseSound() {
   LooseSound.play();
 }
 
-// Ensure the event listener is attached only once
 document.getElementById("checked").addEventListener("click", () => {
   if (!document.getElementById("checked").disabled) {
     checkGuess();
